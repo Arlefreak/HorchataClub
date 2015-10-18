@@ -2,6 +2,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
+import os
 from django.template.defaultfilters import slugify
 
 CHOICES = [(i,i) for i in range(6)]
