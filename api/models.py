@@ -38,5 +38,5 @@ class Horchata(models.Model):
     def __str__(self):
         return u'%s' % (self.name)
     def AdminImage(self):
-        return '<img style=i"height:100px;width:auto;display:block;" src="%s"&>' % self.image.url
+        return '<img style="height:100px;width:auto;display:block;" src="%s"&>' % self.image.url
     AdminImage.allow_tags = True
