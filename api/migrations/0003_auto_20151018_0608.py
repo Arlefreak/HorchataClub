@@ -33,11 +33,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='horchata',
-            name='grade',
-            field=models.CharField(verbose_name='Calificacion', choices=[(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5)], max_length=1, default='0'),
-        ),
-        migrations.AlterField(
-            model_name='horchata',
             name='image',
             field=models.ImageField(verbose_name='Imagen', upload_to=api.models.upload_image_to),
         ),

@@ -16,6 +16,7 @@ def upload_image_to(instance, filename):
 
 class Horchata(models.Model):
     order       = models.IntegerField(_('Order'), default=0)
+    publish     = models.BooleanField(_('Publicado'), default=False)
     credit_card = models.BooleanField(_('Aceptan Tarjeta'), default=False)
     name        = models.CharField(_('Nombre'), max_length=140)
     slug        = models.SlugField(_('Slug'), editable=False)
