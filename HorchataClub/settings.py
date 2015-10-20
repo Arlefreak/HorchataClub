@@ -121,10 +121,12 @@ CKEDITOR_CONFIGS = {
                             },
 }
 
-CORS_ORIGIN_WHITELIST = (
-        'horchata.club',
-        'localhost',
-)
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = (
+#         'horchata.club',
+#         'localhost',
+# )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
