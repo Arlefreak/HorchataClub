@@ -48,6 +48,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
         'corsheaders.middleware.CorsMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -119,6 +120,10 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Basic',
                             },
 }
+
+CORS_ORIGIN_WHITELIST = (
+        'horchata.club',
+)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
