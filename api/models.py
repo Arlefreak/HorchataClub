@@ -25,6 +25,7 @@ class Horchata(models.Model):
     address     = models.CharField(_('Direccion'), max_length=300)
     map_url     = models.URLField(_('URL mapa'))
     description = RichTextField(_('Descripcion'))
+    small_text  = models.CharField(_('Descripcion pequeña'), max_length=140, default='')
     image       = models.ImageField(_('Imagen'), upload_to=upload_image_to)
     date        = models.DateField(_('Fecha agregada'), auto_now_add=True)
     updated     = models.DateField(_('Fecha editado'), auto_now=True)
