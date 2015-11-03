@@ -10,5 +10,5 @@ class HorchataViewSet(viewsets.ModelViewSet):
         queryset           = Horchata.objects.all()
         serializer_class   = HorchataSerializer
         filter_backends = (filters.DjangoFilterBackend,)
-        filter_fields = ('slug','price')
+        filter_fields = ('slug','price', 'publish')
         permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
