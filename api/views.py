@@ -1,10 +1,12 @@
-from api.models                    import *
-from api.serializers               import *
+from api.models                    import Horchata
+from api.serializers               import HorchataSerializer, UserSerializer
+from django.contrib.auth.models    import User
 from rest_framework                import permissions
 from rest_framework                import viewsets
 from rest_framework                import filters
-from taggit.models                 import Tag
-from taggit_serializer.serializers import TaggitSerializer
+from rest_framework                import response
+
+# from taggit.models                 import Tag
 
 class HorchataViewSet(viewsets.ModelViewSet):
         queryset           = Horchata.objects.all()
@@ -12,3 +14,14 @@ class HorchataViewSet(viewsets.ModelViewSet):
         filter_backends = (filters.DjangoFilterBackend,)
         filter_fields = ('slug','price', 'publish')
         permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def retrieve(self, request, pk=None):
+        if pk == 'i':
+            return response.Response(UserSerializer(request.user,
+                context={'request':request}).data)
+        return super(UserViewSet, self).retrieve(request, pk)
