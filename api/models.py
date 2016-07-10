@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
 import os
 from django.template.defaultfilters import slugify
+from ordered_model.models import OrderedModel
 
 CHOICES = [(i,i) for i in range(6)]
 def upload_image_to(instance, filename):
@@ -14,8 +15,7 @@ def upload_image_to(instance, filename):
             now().strftime("%Y%m%d%H%M%S"),
             filename_ext.lower(),)
 
-class Horchata(models.Model):
-    order       = models.IntegerField(_('Order'), default=0)
+class Horchata(OrderedModel):
     publish     = models.BooleanField(_('Publicado'), default=False)
     credit_card = models.BooleanField(_('Aceptan Tarjeta'), default=False)
     name        = models.CharField(_('Nombre'), max_length=140)

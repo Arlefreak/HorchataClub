@@ -1,9 +1,30 @@
 from django.contrib import admin
 from api.models import Horchata
+from ordered_model.admin import OrderedModelAdmin
 
-class HorchataAdmin(admin.ModelAdmin):
-    list_display = ('order','publish','credit_card', 'name', 'tweet', 'price', 'grade', 'date', 'AdminImage')
-    list_display_links = ('name', 'date','tweet', 'AdminImage')
-    list_editable = ('order', 'publish', 'credit_card', 'price', 'grade')
+class HorchataAdmin(OrderedModelAdmin):
+    list_display = (
+        'move_up_down_links',
+        'publish',
+        'credit_card',
+        'name',
+        'tweet',
+        'price',
+        'grade',
+        'date',
+        'AdminImage'
+    )
+    list_display_links = (
+        'name',
+        'date',
+        'tweet',
+        'AdminImage'
+                          )
+    list_editable = (
+        'publish',
+        'credit_card',
+        'price',
+        'grade'
+                     )
 
 admin.site.register(Horchata, HorchataAdmin)

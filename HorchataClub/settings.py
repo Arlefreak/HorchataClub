@@ -44,6 +44,7 @@ INSTALLED_APPS = (
         'taggit_serializer',
         'ckeditor',
         'api',
+        'ordered_model'
         )
 
 MIDDLEWARE_CLASSES = (
@@ -86,11 +87,11 @@ WSGI_APPLICATION = 'HorchataClub.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': env('DBNAME'),
-            'USER': env('DBUSER'),
-            'PASSWORD': env('DBPASSWD'),
-            'HOST': 'localhost',
-            'PORT': env('DBPORT'),
+            'NAME': env('DB_NAME'),
+            'USER': env('DB_USER'),
+            'PASSWORD': env('DB_PASSWORD'),
+            'HOST': env('DB_HOST'),
+            'PORT': env('DB_PORT'),
             }
         }
 
@@ -143,11 +144,27 @@ REST_FRAMEWORK = {
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
 AWS_PRELOAD_METADATA = True
-STATICFILES_STORAGE =  'storages.backends.s3boto.S3BotoStorage' 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+
+if DEBUG:
+    STATIC_URL = '/static/'
+else:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    COLLECTFAST_ENABLED = True
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-COLLECTFAST_ENABLED = True
+CKEDITOR_UPLOAD_PATH = STATIC_URL + 'uploads/'
+MEDIAFILES_LOCATION = 'media'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'HorchataClub.custom_storages.MediaStorage'
+
+# Email
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = env('EMAIL_HOST')
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# EMAIL_PORT = env('EMAIL_PORT')
