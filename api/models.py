@@ -5,6 +5,9 @@ from ckeditor.fields import RichTextField
 import os
 from django.template.defaultfilters import slugify
 from ordered_model.models import OrderedModel
+from location_field.models.plain import PlainLocationField
+
+
 
 CHOICES = [(i,i) for i in range(6)]
 def upload_image_to(instance, filename):
@@ -23,9 +26,7 @@ class Horchata(OrderedModel):
     price       = models.IntegerField(_('Precio'), default=0)
     grade       = models.IntegerField(_('Calificacion'),choices=CHOICES, default=0) 
     address     = models.CharField(_('Direccion'), max_length=300)
-    map_url     = models.URLField(_('URL mapa'), null=True)
-    lon         = models.FloatField(_('Longitud'), default=0)
-    lat         = models.FloatField(_('Latitude'), default=0)
+    location    = PlainLocationField(based_fields=['city'], zoom=7, default=(1.0, 1.0))
     description = RichTextField(_('Descripcion'))
     small_text  = models.CharField(_('Descripcion pequeña'), max_length=140, default='')
     image       = models.ImageField(_('Imagen'), upload_to=upload_image_to)

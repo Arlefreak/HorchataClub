@@ -44,7 +44,8 @@ INSTALLED_APPS = (
         'taggit_serializer',
         'ckeditor',
         'api',
-        'ordered_model'
+        'ordered_model',
+        'location_field',
         )
 
 MIDDLEWARE_CLASSES = (
