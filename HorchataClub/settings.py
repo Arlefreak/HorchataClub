@@ -45,7 +45,7 @@ INSTALLED_APPS = (
         'ckeditor',
         'api',
         'ordered_model',
-        'location_field',
+        'geoposition',
         )
 
 MIDDLEWARE_CLASSES = (
@@ -132,6 +132,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+GEOPOSITION_GOOGLE_MAPS_API_KEY = env('GEOPOSITION_GOOGLE_MAPS_API_KEY')
 
 STATIC_URL = '/static/'
 

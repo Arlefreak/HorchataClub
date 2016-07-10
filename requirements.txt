@@ -1,12 +1,13 @@
 boto==2.41.0
 Collectfast==0.2.3
+conekta==2.2
 Django==1.9.3
 django-ckeditor==5.0.3
 django-cors-headers==1.1.0
 django-countries==3.4.1
 django-environ==0.4.0
 django-filter==0.13.0
-django-location-field==1.6.1
+django-geoposition==0.2.3
 django-modeltranslation==0.11
 django-ordered-model==1.2.0
 django-solo==1.1.2
