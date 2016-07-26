@@ -22,7 +22,6 @@ class Horchata(OrderedModel):
     credit_card = models.BooleanField(_('Aceptan Tarjeta'), default=False)
     name        = models.CharField(_('Nombre'), max_length=140)
     slug        = models.SlugField(_('Slug'), editable=False)
-    price       = models.IntegerField(_('Precio'), default=0)
     grade       = models.IntegerField(_('Calificacion'),choices=CHOICES, default=0) 
     address     = models.CharField(_('Direccion'), max_length=300)
     location    = GeopositionField()

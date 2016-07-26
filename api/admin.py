@@ -9,7 +9,6 @@ class HorchataAdmin(OrderedModelAdmin):
         'credit_card',
         'name',
         'tweet',
-        'price',
         'grade',
         'date',
         'AdminImage'
@@ -23,7 +22,6 @@ class HorchataAdmin(OrderedModelAdmin):
     list_editable = (
         'publish',
         'credit_card',
-        'price',
         'grade'
                      )
 
