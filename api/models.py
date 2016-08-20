@@ -36,7 +36,7 @@ class Horchata(OrderedModel):
         self.slug = slugify(self.name)
         super(Horchata, self).save(*args, **kwargs)
     class Meta:
-        ordering  = ['order', 'date', 'name']
+        ordering  = ['-order', 'date', 'name']
     def __unicode__(self):
         return u'%s' % (self.name)
     def __str__(self):
