@@ -1,14 +1,11 @@
 from django.contrib import admin
 from api.models import Horchata
-from ordered_model.admin import OrderedModelAdmin
+from adminsortable2.admin import SortableAdminMixin
 
-class HorchataAdmin(OrderedModelAdmin):
+class HorchataAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = (
-        'move_up_down_links',
         'publish',
-        'credit_card',
         'name',
-        'tweet',
         'grade',
         'date',
         'AdminImage'
@@ -16,12 +13,10 @@ class HorchataAdmin(OrderedModelAdmin):
     list_display_links = (
         'name',
         'date',
-        'tweet',
         'AdminImage'
                           )
     list_editable = (
         'publish',
-        'credit_card',
         'grade'
                      )
 

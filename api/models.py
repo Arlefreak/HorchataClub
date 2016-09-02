@@ -4,11 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
 import os
 from django.template.defaultfilters import slugify
-from ordered_model.models import OrderedModel
 from geoposition.fields import GeopositionField
 
 
-CHOICES = [(i,i) for i in range(6)]
+CHOICES = [(i,i) for i in range(3)]
 def upload_image_to(instance, filename):
         from django.utils.timezone import now
         filename_base, filename_ext = os.path.splitext(filename)
@@ -17,7 +16,7 @@ def upload_image_to(instance, filename):
             now().strftime("%Y%m%d%H%M%S"),
             filename_ext.lower(),)
 
-class Horchata(OrderedModel):
+class Horchata(models.Model):
     publish     = models.BooleanField(_('Publicado'), default=False)
     credit_card = models.BooleanField(_('Aceptan Tarjeta'), default=False)
     name        = models.CharField(_('Nombre'), max_length=140)
@@ -32,11 +31,12 @@ class Horchata(OrderedModel):
     updated     = models.DateField(_('Fecha editado'), auto_now=True)
     tags        = TaggableManager(blank=True)
     tweet       = models.CharField(_('Tweet id'), editable=False, null=True, max_length=140)
+    order       = models.PositiveIntegerField(default=0, blank=False, null=False)
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Horchata, self).save(*args, **kwargs)
     class Meta:
-        ordering  = ['-order', 'date', 'name']
+        ordering  = ['order', 'date', 'name']
     def __unicode__(self):
         return u'%s' % (self.name)
     def __str__(self):

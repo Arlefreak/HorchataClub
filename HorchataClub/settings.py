@@ -44,7 +44,7 @@ INSTALLED_APPS = (
         'taggit_serializer',
         'ckeditor',
         'api',
-        'ordered_model',
+        'adminsortable2',
         'geoposition',
         )
 

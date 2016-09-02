@@ -2,6 +2,7 @@ boto==2.41.0
 Collectfast==0.2.3
 conekta==2.2
 Django==1.8.14
+django-admin-sortable2==0.6.4
 django-ckeditor==5.0.3
 django-cors-headers==1.1.0
 django-countries==3.4.1
