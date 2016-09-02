@@ -9,7 +9,7 @@ from rest_framework                import response
 # from taggit.models                 import Tag
 
 class HorchataViewSet(viewsets.ModelViewSet):
-        queryset           = Horchata.objects.all()
+        queryset           = Horchata.objects.filter(publish=True)
         serializer_class   = HorchataSerializer
         filter_backends = (filters.DjangoFilterBackend,)
         filter_fields = ('slug', 'publish')
