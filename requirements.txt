@@ -11,7 +11,7 @@ django-modeltranslation==0.11
 django-solo==1.1.2
 django-storages-redux==1.3.2
 django-taggit==0.18.1
-django-taggit-serializer==0.1.5
+-e git://github.com/Arlefreak/django-taggit-serializer.git#egg=django-taggit-serializer
 django-uuslug==1.1.7
 djangorestframework==3.3.3
 greenlet==0.4.9
