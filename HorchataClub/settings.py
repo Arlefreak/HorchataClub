@@ -26,6 +26,7 @@ ALLOWED_HOSTS = [
         '.horchata.club',
         'horchata.club',
         ]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') 
 
 # Application definition
 
