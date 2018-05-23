@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,13 +37,17 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'taggit',
     'taggit_serializer',
     'ckeditor',
     'api',
-)
+    'adminsortable2',
+    'geoposition',
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -115,6 +119,7 @@ CKEDITOR_CONFIGS = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+GEOPOSITION_GOOGLE_MAPS_API_KEY = env('GEOPOSITION_GOOGLE_MAPS_API_KEY')
 
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
