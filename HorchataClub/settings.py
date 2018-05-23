@@ -18,15 +18,25 @@ SITE_ROOT = root()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env('SECRET_KEY')
-
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = [
-    '.arlefreak.club',
-    '.horchata.club',
-    'horchata.club',
-]
+if (DEBUG):
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = [
+        '.horchata.club',
+        'horchata.club',
+        '138.197.17.118',
+        '127.0.0.1',
+        'localhost',
+    ]
 
+ADMINS = (('afk', 'afk@ellugar.co'), )
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 # Application definition
 
 INSTALLED_APPS = [
